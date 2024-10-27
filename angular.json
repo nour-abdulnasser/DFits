@@ -39,7 +39,7 @@
           "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "dist/bootcamp-task",
-            "baseHref": "/DFits/",
+            "baseHref": "https://github.com/nour-abdulnasser/DFits",
 
             "index": "src/index.html",
             "browser": "src/main.ts",
