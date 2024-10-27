@@ -1,0 +1,29 @@
+:root {
+  --primary-color: #002540;
+  --secondary-color: #b6d2e0;
+  --tertiary-color: #eae6df;
+}
+::-moz-selection {
+  color: white;
+  background: #b6d2e0;
+}
+::selection {
+  color: white;
+  background: #b6d2e0;
+}
+
+.primary-font {
+  font-family: "Jost", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+.secondary-font {
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+.main-section{
+  margin-top: 5rem;
+}

@@ -1,0 +1,20 @@
+footer {
+  background-color: #002540;
+  color: #eae6df;
+}
+
+.brand-name {
+    font-size: 2rem;
+    font-family: "Jost", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 900;
+    letter-spacing: 5px;
+    transition: all 0.25s ease-in-out;
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+  color: #eae6df;
+  
+}

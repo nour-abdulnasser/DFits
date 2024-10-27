@@ -1,0 +1,62 @@
+<section class="my-4" *ngFor="let group of allProductsGrouped | keyvalue">
+  <section class="category-section primary-font">
+    <h2 [title]="group.key" class="section-title text-center mb-4">
+      {{ group.key | uppercase }}
+    </h2>
+    <div class="products-list row g-3">
+      <article 
+        class=" col-sm-6 col-md-4 col-lg-3 col-xl-3"
+        *ngFor="let product of group.value"
+      >
+        <div class="card p-0 h-100 d-flex flex-column justify-content-between  ">
+          <div class="image-container p-3 d-flex m-auto">
+            <img
+              [src]="product.image"
+              class="card-img-top w-100 m-auto"
+              [alt]="product.title"
+              [title]="product.title"
+            />
+          </div>
+          <div class="card-body d-flex flex-column justify-content-end p-0">
+            <div class="title-containter px-2">
+              <h5 class="card-title" [title]="product.title">
+                {{ product.title | cutText : 5 }}
+              </h5>
+            </div>
+            <div class="rating-container  px-2 d-flex">
+              <div class="stars-container" [title]="product.rating.rate">
+                <i
+                  *ngFor="let star of getStars(product).full"
+                  class="fa fa-star rating-color"
+                ></i>
+                <i
+                  class="fa-regular fa-star-half-stroke"
+                  *ngIf="product.rating.rate % 1 !== 0"
+                ></i>
+                <i
+                  *ngFor="let star of getStars(product).empty"
+                  class="fa fa-star fa-regular rating-color"
+                ></i>
+              </div>
+              <p class="ms-1">({{ product.rating.count }})</p>
+            </div>
+
+            <button
+              class="button-product text-center"
+              title="Add to cart"
+            >
+              Add to Cart — <span>{{ product.price | currency : "E£" }}</span>
+            </button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+</section>
+<ngx-spinner *ngIf="allProducts.length === 0"
+  bdColor="rgba(0, 0, 0, 0.8)" 
+  size="medium" 
+  color="#fff" 
+  type="ball-scale-multiple"
+  [fullScreen]="true">
+</ngx-spinner>

@@ -1,0 +1,42 @@
+@import url("../app.component.css");
+
+.section-title {
+  background-color: #eae6df;
+  padding: 0.3rem;
+  
+  font-weight: 700;
+  color: #eae6df;
+  letter-spacing: 5px;
+  text-shadow: 0 0 1px #002540, 0 0 1px #002540, 0 0 1px #002540,
+    0 0 1px #002540;
+}
+.image-container {
+  overflow: hidden;
+}
+img {
+  width: 300px;
+  height: 200px;
+  object-fit: contain;
+}
+
+.card {
+  border: solid 1px #b6d2e0;
+  border-bottom: none;
+  border-radius: 4px;
+}
+.button-product {
+  border: none;
+  border-radius: 2px;
+  padding: 0.3rem;
+  width: 100%;
+  background-color: #002540;
+  color: white;
+  font-size: 0.8rem;
+  transition: all 0.25s ease-in-out;
+}
+.button-product:hover {
+  color: #b6d2e0;
+}
+.rating-color {
+  color: #002540;
+}
