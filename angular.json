@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "BootcampTask": {
+    "DFits": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:class": {
@@ -41,6 +41,9 @@
             "baseHref": "/DFits/",
             "deployUrl": "/DFits/",  
             "outputPath": "dist/dfits",
+            "optimization": {
+              "fonts": false
+            },
 
             "index": "src/index.html",
             "browser": "src/main.ts",
@@ -99,10 +102,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "BootcampTask:build:production"
+              "buildTarget": "DFits:build:production"
             },
             "development": {
-              "buildTarget": "BootcampTask:build:development"
+              "buildTarget": "DFits:build:development"
             }
           },
           "defaultConfiguration": "development"
