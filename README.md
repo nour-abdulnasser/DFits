@@ -8,54 +8,73 @@ This is an Angular application designed to list products in an accessible, clean
 
 ### 1. **Architecture**
 
-- The application is built using Angular's latest standalone component-based architecture, ensuring modularity, scalability and ease of maintenance.
+- The application is built using Angular's latest standalone component-based architecture, ensuring modularity, scalability, and ease of maintenance.
 - Key components include:
   - `HomeComponent`: Products are listed in categorical groups.
   - `NavComponent`: Contains an interactive logo, a menu button, and options for cart and search functionalities.
-  - `FooterComponent`: Contains links, logo and trademark.
+  - `FooterComponent`: Contains links, logo, and trademark.
 
 ### 2. **Data Handling**
 
-- The application retrieves data from https://fakestoreapi.com, using Angular's `HttpClient` imported in the service and the component, and `provideHttpCLient()` provided in `appConfig` to handle asynchronous HTTP requests.
+- The application retrieves data from [Fake Store API](https://fakestoreapi.com), using Angular's `HttpClient`, which is imported in both the service and the component. `provideHttpClient()` is used in `appConfig` to handle asynchronous HTTP requests.
 
 ### 3. **UI/UX**
 
-- The user interface was designed using Bootstrap CSS Framework, Fontawesome for icons, and ngx-spinner for the loading UI, which ensures a clean, responsive, and user-friendly interface.
+- The user interface was designed using the Bootstrap CSS framework, FontAwesome for icons, and ngx-spinner for loading states, ensuring a clean, responsive, and user-friendly interface.
 - Each element has a corresponding title to ensure accessibility and adhere to SEO principles.
+
+---
 
 ## Challenges
 
-Some of the challenges faced during the development of this project were:
+### 1. **Grouping Products**
 
-- **Grouping products**:
-  - Challenges:
-    1. The API route `{GET} /categories` only views the category names.
-       The API includes a separate route to get products of a specific category. **This means relying on the API to fetch products categorically requires time proportional to the number of categories and the products in each category.**
-    2. TypeScript doesn't have a built-in `Object.groupBy()`.
-  - Solution:
-    1.  One API request is sent to get all products.
-    2.  The grouping functionality was implemented on all products using `Map` to store key-value pairs.
-- **Styling**:
-  - Challenges:
-    1. Cards having different heights.
-    2. Employing empty stars.
-  - Solution:
-    1.  Bootstrap v5.3.3 Grid and flexbox is used, where each card is given `.h-100`.
-    2. Structural directives are used along with mathematical logic to list the stars and ensure the rating has visible context. 
-- **Deployment**:
-  -Challenges:
-    1. Local folder name has a different name to the remote repository, which led to unexpected behaviour.
-  - Solution:
-    1. Unpublish and unsave previous deployment.
-    2. ```bash 
-        npm install -g angular-cli-ghpages
-        ```
-    3. Check build options (baseHref is the name of the GitHub repository):  
-       ```bash
-       "outputPath": "dist",
-        "baseHref": "/DFits/",
-    ```
-    4. `ng deploy`
+**Challenges:**
+- The API route `{GET} /categories` only returns category names.
+- The API includes a separate route to fetch products by category. This requires additional time proportional to the number of categories and the products in each category.
+- TypeScript does not have a built-in `Object.groupBy()`.
+
+**Solution:**
+- One API request is sent to get all products.
+- The grouping functionality was implemented using `Map` to store key-value pairs for efficient product grouping.
+
+### 2. **Styling**
+
+**Challenges:**
+- Cards had varying heights.
+- Implementing empty stars for the product rating display.
+
+**Solution:**
+- Bootstrap v5.3.3 Grid and flexbox were used, and each card was given the `.h-100` class for uniform height.
+- Angular structural directives and mathematical logic were used to dynamically render the stars and provide context for the product ratings.
+
+### 3. **Deployment**
+
+**Challenges:**
+- The local folder name differed from the remote repository, which caused unexpected behavior.
+
+**Solution:**
+- Unpublished and removed previous deployment.
+- Installed the `angular-cli-ghpages` package:
+
+  ```bash
+  npm install -g angular-cli-ghpages
+  ```
+
+- Checked and updated the build options (`baseHref` is the name of the GitHub repository):
+
+  ```bash
+  "outputPath": "dist",
+  "baseHref": "/DFits/",
+  ```
+
+- Deployed using Angular CLI:
+
+  ```bash
+  ng deploy
+  ```
+
+---
 
 ## Running the Application Locally
 
@@ -74,6 +93,7 @@ Follow these steps to run the application locally:
    ```
 
 3. **Install dependencies:**
+
    Ensure that you have [Node.js](https://nodejs.org/) and [Angular CLI](https://angular.io/cli) installed. Then run:
 
    ```bash
@@ -81,6 +101,7 @@ Follow these steps to run the application locally:
    ```
 
 4. **Run the application:**
+
    Start the Angular development server:
 
    ```bash
@@ -90,12 +111,15 @@ Follow these steps to run the application locally:
    The application will be accessible at `http://localhost:4200/`.
 
 5. **Building the project:**
+
    To build the project for production, run:
+
    ```bash
    ng build --configuration=production
    ```
 
+---
+
 ## Conclusion
 
 This project demonstrates a simple e-mart that lists products. Despite the challenges, the final result is a functional and scalable application that can be extended further with additional features.
-
