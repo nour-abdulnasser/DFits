@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "deploy": "ng build --configuration production && npx gh-pages -d dist/DFits",
+    "deploy": "ng build --configuration production && npx gh-pages -d dist/your-project-name",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:BootcampTask": "node dist/bootcamp-task/server/server.mjs"
