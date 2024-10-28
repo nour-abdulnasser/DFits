@@ -38,7 +38,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            
+            "outputPath": "dist/dfits",
             "optimization": {
               "fonts": false
             },
@@ -85,7 +85,8 @@
                   "maximumError": "4kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "baseHref": "/DFits/"
             },
             "development": {
               "optimization": false,
