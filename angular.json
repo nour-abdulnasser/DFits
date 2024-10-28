@@ -38,9 +38,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "baseHref": "/DFits/",
-            "deployUrl": "/DFits/",  
-            "outputPath": "dist/dfits",
+            
             "optimization": {
               "fonts": false
             },
