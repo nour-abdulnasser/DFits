@@ -5,7 +5,8 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "deploy": "ng build --configuration production && npx angular-cli-ghpages --dir=dist/DFits",
+   "predeploy": "ng build --configuration production --base-href=/DFits/",
+    "deploy": "npx gh-pages -d dist/dfits",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:BootcampTask": "node dist/bootcamp-task/server/server.mjs"
