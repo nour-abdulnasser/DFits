@@ -71,7 +71,8 @@ This is an Angular application designed to list products in an accessible, clean
 - Deployed using Angular CLI:
 
   ```bash
-  ng deploy
+  npx angular-cli-ghpages --dir=dist
+
   ```
 
 ---
