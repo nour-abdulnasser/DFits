@@ -40,9 +40,6 @@ box-shadow: none;
   color: #002540;
   font-size: 1.4rem;
 cursor: pointer;  
-<<<<<<< HEAD
-}  
-=======
 }  
 
 @media (min-width: 992px) {
@@ -52,4 +49,3 @@ cursor: pointer;
       flex-grow: 0;
   }
 }
->>>>>>> 8a83f07 (remove flex grow from navbar collapse)
