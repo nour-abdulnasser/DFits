@@ -5,19 +5,32 @@ import { CommonModule, UpperCasePipe } from '@angular/common';
 import { CutTextPipe } from '../cut-text.pipe';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { NgxSpinnerModule } from 'ngx-spinner';
-
+import { FormsModule } from '@angular/forms';
+import { SearchPipe } from '../search.pipe';
+import { SearchService } from '../search.service';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, CutTextPipe, UpperCasePipe,NgxSpinnerModule],
+  imports: [
+    CommonModule,
+    CutTextPipe,
+    SearchPipe,
+    UpperCasePipe,
+    NgxSpinnerModule,
+    FormsModule,
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
 export class HomeComponent implements AfterViewInit {
-  constructor(private _ProductsService: ProductsService, private _NgxSpinnerService: NgxSpinnerService) {}
+  constructor(
+    private _ProductsService: ProductsService,
+    private _SearchService: SearchService,
+    private _NgxSpinnerService: NgxSpinnerService
+  ) {}
   allProducts: Product[] = [];
   allProductsGrouped: Map<string, Product[]> = new Map();
-  
+  homeSearch: string | null = '';
 
   private totalProducts = this.allProducts.length;
   private loadedProductsCount = 0;
@@ -40,6 +53,9 @@ export class HomeComponent implements AfterViewInit {
         console.log(err);
       },
     });
+    this._SearchService.searchTerm$.subscribe((term) => {
+      this.homeSearch = term;
+    });
   }
 
   onProductLoad(): void {
@@ -49,14 +65,15 @@ export class HomeComponent implements AfterViewInit {
       this.checkToHideSpinner();
     }
   }
-   getStars(product:Product){
+  getStars(product: Product) {
     return {
-      full:Array(Math.floor(product.rating.rate)).fill(0), empty:Array(5-Math.ceil(product.rating.rate)).fill(0)
+      full: Array(Math.floor(product.rating.rate)).fill(0),
+      empty: Array(5 - Math.ceil(product.rating.rate)).fill(0),
     };
   }
   private checkToHideSpinner(): void {
     if (this.loadedProductsCount === this.totalProducts) {
-      this._NgxSpinnerService.hide();  
+      this._NgxSpinnerService.hide();
     }
   }
 }

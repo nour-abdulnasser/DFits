@@ -1,14 +1,39 @@
-<nav #navbar class="primary-font navbar navbar-expand-lg bg-body-tertiary fixed-top">
-  <div class="container d-flex justify-content-between ">
-    <div class="p-3">
+<nav
+  #navbar
+  class="primary-font navbar navbar-expand-lg bg-body-tertiary fixed-top"
+>
+  <div class="container d-flex justify-content-between">
+    <div class="p-3 d-flex align-items-center">
       <a>
         <i class="fa-solid me-3 fa-cart-shopping icon"></i>
       </a>
-      <a>
-        <i class="fa-solid me-3 fa-magnifying-glass icon"></i>
-      </a>
+      <button
+        (click)="toggleSearch()"
+        title="menu"
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSearchDropdown"
+        aria-controls="navbarSearchDropdown"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <a>
+          <i class="fa-solid me-3 fa-magnifying-glass icon"></i>
+        </a>
+      </button>
+      <div id="navbarSearchWide">
+        <input
+          type="text"
+          id="navSearchInputWide"
+          class="form-control form-control-sm primary-font"
+          placeholder="Search by Product Name"
+          (input)="onSearchChange($event)"
+        />
+      </div>
     </div>
-    <a class="navbar-brand">
+
+    <a class="navbar-brand ">
       <span class="rotate-left">D</span>
       <span class="rotate-right">'</span>
 
@@ -17,6 +42,7 @@
       <span class="rotate-left">t</span>
       <span class="rotate-right">s</span>
     </a>
+
 
     <button
       title="menu"
@@ -34,8 +60,18 @@
         class="icon"
       ></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
+    <div class="collapse navbar-collapse" id="navbarSearchDropdown">
+      <input
+        type="text"
+        id="navSearchInput"
+        class="form-control form-control-sm primary-font"
+        placeholder="Search by Product Name"
+        (input)="onSearchChange($event)"
+      />
+    </div>
+
+    <div class="collapse navbar-collapse " id="navbarNavDropdown">
+      <ul class="navbar-nav ">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>

@@ -1,3 +1,5 @@
+@import url("../app.component.css");
+
 nav{
  transition: all 0.25s ease-in-out;
 }
@@ -9,7 +11,22 @@ outline: none;
 outline: none;
 box-shadow: none;
 }
-
+#navSearchInput, #navSearchInputWide{
+  padding: 0.5rem;
+  width: 100%;
+  
+  border-radius: 0px;
+  border: none;
+  border-bottom: #002540 1px solid;
+}
+#navSearchInput:focus, #navSearchInputWide:focus{
+  outline: none;
+  box-shadow: none;
+}
+#navbarSearchDropdown{
+  padding-top:0.5rem ;
+  padding-bottom:0.5rem ;
+}
 .navbar-brand {
     font-size: 2rem;
     font-family: "Jost", sans-serif;
@@ -21,6 +38,8 @@ box-shadow: none;
     cursor: pointer;
     display: inline-block;     
     position: relative;
+    transform: translateX(-25%);
+    
   }
   
   .navbar-brand .rotate-left, .rotate-right {
@@ -42,10 +61,33 @@ box-shadow: none;
 cursor: pointer;  
 }  
 
-@media (min-width: 992px) {
-  .navbar-expand-lg .navbar-collapse {
-  
-      justify-content: end;
-      flex-grow: 0;
-  }
+nav ul li a{
+  font-weight: 600;
 }
+#navbarSearchWide{
+  display: none;
+}
+
+@media (min-width: 992px) {
+  #navbarSearchWide{
+    display: flex;
+
+  }
+  #navSearchInputWide{
+    width: 15rem;
+  }
+  .navbar-brand{
+    transform: translateX(-50%);
+  }
+  
+  .navbar-expand-lg .navbar-collapse {
+    
+    justify-content: end;
+    flex-grow: 0;
+  }
+  #navbarSearchDropdown{
+    display: none !important;
+  }
+  
+}
+
