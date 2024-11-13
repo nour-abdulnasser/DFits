@@ -28,12 +28,16 @@ export class HomeComponent implements AfterViewInit {
     private _SearchService: SearchService,
     private _NgxSpinnerService: NgxSpinnerService
   ) {}
+
   allProducts: Product[] = [];
   allProductsGrouped: Map<string, Product[]> = new Map();
   homeSearch: string | null = '';
 
   private totalProducts = this.allProducts.length;
   private loadedProductsCount = 0;
+
+  isTogglePopup: boolean = false;
+  popupProduct: Product = {} as Product;
 
   ngAfterViewInit() {
     this._NgxSpinnerService.show();
@@ -75,5 +79,18 @@ export class HomeComponent implements AfterViewInit {
     if (this.loadedProductsCount === this.totalProducts) {
       this._NgxSpinnerService.hide();
     }
+  }
+
+  togglePopup(id: number) {
+    this.isTogglePopup = true;
+    this._ProductsService.getSingleProduct(id).subscribe((res) => {
+      this.popupProduct = res;
+    });
+
+    /**
+     * 
+     * const overlay = document.getElementById('popupOverlay');
+            overlay.classList.toggle('show');
+     */
   }
 }

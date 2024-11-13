@@ -36,27 +36,21 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "docs",
             "baseHref": "/DFits/",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": ["zone.js"],
+            "tsConfig": "tsconfig.app.json",
             "optimization": {
               "fonts": false
             },
-
-            "index": "src/index.html",
-            "browser": "src/main.ts",
-            "polyfills": ["zone.js"],
-            "tsConfig": "tsconfig.app.json",
             "assets": [
               {
                 "glob": "**/*",
-                "input": "src/assets",
-                "output": "assets"
-              },  {
-                "glob": "favicon.ico",
-                "input": "src",
-                "output": "."
+                "input": "public"
               }
             ],
             "styles": [
@@ -70,10 +64,7 @@
             ],
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
-            ],
-            "server": "src/main.server.ts",
-            
-        
+            ]
           },
           "configurations": {
             "production": {
@@ -114,7 +105,10 @@
           "defaultConfiguration": "development"
         },
         "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n"
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "DFits:build"
+          }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
@@ -128,9 +122,7 @@
               }
             ],
             "styles": ["src/styles.css"],
-            "scripts": [
-              
-            ]
+            "scripts": []
           }
         },
         "deploy": {

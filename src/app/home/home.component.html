@@ -1,17 +1,25 @@
-
-<h2 *ngIf="homeSearch" title="results title" class="section-title text-center mb-3">
+<h2
+  *ngIf="homeSearch"
+  title="results title"
+  class="section-title text-center mb-3"
+>
   RESULTS
 </h2>
 <section class="my-4" *ngFor="let group of allProductsGrouped | keyvalue">
   <section class="category-section primary-font">
-    <h2 *ngIf="!homeSearch" [title]="group.key" class="section-title text-center mb-4">
+    <h2
+      *ngIf="!homeSearch"
+      [title]="group.key"
+      class="section-title text-center mb-4"
+    >
       {{ group.key | uppercase }}
     </h2>
-    
+
     <div class="products-list row g-3">
       <article
         class="col-sm-6 col-md-4 col-lg-3 col-xl-3"
-        *ngFor="let product of (group.value | search: homeSearch )"
+        *ngFor="let product of group.value | search : homeSearch"
+        (click)="togglePopup(product.id)"
       >
         <div class="card p-0 h-100 d-flex flex-column justify-content-between">
           <div class="image-container p-3 d-flex m-auto">
@@ -55,6 +63,31 @@
     </div>
   </section>
 </section>
+<div class="popup">
+  <div
+    [class]="{ show: isTogglePopup, hide: !isTogglePopup }"
+    id="popupOverlay"
+    class="overlay-container"
+  >
+    <div class="popup-box bg-info">
+      <!-- <h2>{{popupProduct.title}}</h2> -->
+      <div class="row bg-danger-subtle">
+        <div class="col-md-6 bg-black">
+          <img
+          class="w-100"
+          [src]="popupProduct.image"
+          [alt]="popupProduct.title"
+          />
+        </div>
+        <h3>{{ popupProduct.title }}</h3>
+        <div class="col-md-6 bg-danger">{{ popupProduct.description }}</div>
+      </div>
+      <button class="btn-close-popup" (click)="isTogglePopup = false">
+        Close
+      </button>
+    </div>
+  </div>
+</div>
 <ngx-spinner
   *ngIf="allProducts.length === 0"
   bdColor="rgba(0, 0, 0, 0.8)"

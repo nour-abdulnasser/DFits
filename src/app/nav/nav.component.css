@@ -44,8 +44,8 @@ box-shadow: none;
   
   .navbar-brand .rotate-left, .rotate-right {
     display: inline-block; 
-    transition: all 0.25s ease-in-out; /
-  }
+    transition: all 0.25s ease-in-out; 
+  } 
   
   .navbar-brand:hover  .rotate-left  {
     transform: rotate(-16deg);
